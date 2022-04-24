@@ -1,0 +1,850 @@
+                                     DAY5 FUNCTIONS
+
+Q1.Do the below programs in anonymous function & IIFE
+  a)Print odd numbers in an array using anonymous function
+ -- eg: 
+            var odd=function(a){
+                var  res="";
+                for(i=0;i<a.length-1;i++)
+                {
+                    if(a[i]%2!==0)
+                    {
+                        res+=a[i]+" ";
+                    }
+                }
+                res+=a[a.length-1];
+                return res;
+            }
+            console.log(odd([1,2,3,4,5,6,7,8,9]))
+
+                    OUTPUT: 
+                  1 3 5 7 9  
+        
+  
+ a)Print odd numbers in an array using IIFE
+-- eg: 
+            (function(a){
+                var  res="";
+                for(i=0;i<a.length-1;i++)
+                {
+                    if(a[i]%2!==0)
+                    {
+                        res+=a[i]+" "
+                    }
+                }
+                res+=a[a.length-1]
+                console.log(res);
+            })([1,2,3,4,5,7,8,9]);
+
+                    OUTPUT: 
+                   1 3 5 7 9
+_____________________________________________
+b)Convert all the strings to title caps in a string array using anonymous function.
+--eg: 
+   var str=function (string) {
+    var data = string.toLowerCase().split(" ");
+    for(var i = 0; i< data.length; i++){
+        data[i] = data[i][0].toUpperCase() + data[i].slice(1);
+    }
+    data.join(" ");
+ var res="";
+ for(let i=0;i<data.length-1;i++)
+ {
+     res+=data[i]+" "
+ }
+ res+=data[data.length-1]
+ return res;
+ }
+ console.log(str("convert all the strings to title caps in a string array"));
+_______
+b)Convert all the strings to title caps in a string array using  IIFE function.
+--eg: 
+    (function (string) {
+        var data = string.toLowerCase().split(" ");
+        for(var i = 0; i< data.length; i++){
+           data[i] = data[i][0].toUpperCase() + data[i].slice(1);
+        }
+     data.join(" ");
+     var res="";
+     for(let i=0;i<data.length-1;i++)
+     {
+         res+=data[i]+" "
+     }
+     res+=data[data.length-1]
+     console.log(res);
+     }) ("convert all the strings to title caps in a string array");
+____________________________________________________________________________
+c)Sum of all numbers in an array using anonymous function.
+--eg:
+    var sum =function(a){
+    var  res=0;
+    for(i=0;i<a.length;i++)
+    {
+            res+=a[i]
+    }
+    return res;
+ 
+}
+console.log(sum([1,2,3,4,5,6,7,8,9]))
+________
+c)Sum of all numbers in an array using IIFE function.
+--eg:
+    (function(a){
+        var  res=0;
+        for(i=0;i<a.length;i++)
+        {
+                res+=a[i]
+        }
+        console.log(res);
+    })([1,2,3,4,5,6,7,8,9]);
+______________________________________________________________________________
+d)Return all the prime numbers in an array using anonymous function.
+--eg:
+    var sum =function(a){
+        var  res="";
+        for(i=0;i<a.length;i++)
+        {
+            var count=0;
+            for(j=1;j<=a[i];j++)
+            {
+                if(a[i]%j===0)
+                {
+                    count++
+                }
+            }
+            if(count==2)
+            {
+                res+=a[i]+" "
+            }
+        }
+        return res;
+     
+    }
+    console.log(sum([1,2,3,4,5,6,7,8,9]))
+_______
+d)Return all the prime numbers in an array using IIFE function.
+--eg:
+    (function(a){
+    var  res="";
+    for(i=0;i<a.length;i++)
+    {
+        var count=0;
+        for(j=1;j<=a[i];j++)
+        {
+            if(a[i]%j===0)
+            {
+                count++
+            }
+        }
+        if(count==2)
+        {
+            res+=a[i]+" "
+        }
+    }
+    console.log(res);
+ 
+})([1,2,3,4,5,6,7,8,9]);
+_____________________________________________________________________
+e)Return all the palindromes in an array using anonmous function
+--eg:
+    var palindrone=function(x){
+        var r="";
+        var a="";
+        for(i=0;i<x.length;i++)
+        {
+            r+=x[i];
+            var count=0
+            
+            for(j=0;j<r.length;j++)
+            {
+                if(r[j]===r[((r.length-1)-j)])
+                {
+                    count++
+                    
+                }
+            }
+            if(count===r.length)
+            {
+                a+=r+" "
+            }
+            r="";
+        }
+        return a;
+     
+    }
+    console.log(palindrone(["level","madam", "sister", "guvi", "dad","zenclass"]))
+_____________
+e)Return all the palindromes in an array using IIFE function
+--eg:
+var palindrone=function(x){
+    var r="";
+    var a="";
+    for(i=0;i<x.length;i++)
+    {
+        r+=x[i];
+        var count=0
+        
+        for(j=0;j<r.length;j++)
+        {
+            if(r[j]===r[((r.length-1)-j)])
+            {
+                count++
+                
+            }
+        }
+        if(count===r.length)
+        {
+            a+=r+" "
+        }
+        r="";
+    }
+    return a;
+ 
+}
+console.log(palindrone(["level","madam", "sister", "guvi", "dad","zenclass"]))
+________________________________________________________________________________
+f)Return median of two sorted arrays of the same size using anonymous function.
+--eg:
+    var array=function(a,b){
+        var c=[];
+        var n=a.length;
+        var p=b.length;
+        var i=0;
+        var j=0;
+        var medium=0;
+        while(i<n && j<p)
+        {
+            if(a[i]<b[j])
+            {
+                c.push(a[i])
+                i++
+            }
+            else
+            {
+                c.push(b[j])
+                j++
+            }
+        }
+        
+         if(i<n)
+         {
+             for(let k=i;k<n;k++)
+             {
+                 c.push(a[k])
+             }
+         }
+         else if(j<p)
+         {
+             for(let m=j;m<p;m++)
+             {
+                 c.push(b[m])
+             }
+         }
+         if(c.length%2===0)
+         {
+             medium=(c[(c.length/2)-1]+c[c.length/2])/2
+         }
+         else
+         {
+             medium=c[Math.floor(c.length/2)]
+         }
+         return medium;
+        
+    }
+    console.log(array([1,2,3,4],[11,10,93,7]));
+_________
+f)Return median of two sorted arrays of the same size using IIFE function.
+--eg:
+       
+    (function(a,b){
+        var c=[];
+        var n=a.length;
+        var p=b.length;
+        var i=0;
+        var j=0;
+        var med=0;
+        while(i<n && j<p)
+        {
+            if(a[i]<b[j])
+            {
+                c.push(a[i])
+                i++
+            }
+            else
+            {
+                c.push(b[j])
+                j++
+            }
+        }
+        
+         if(i<n)
+         {
+             for(let k=i;k<n;k++)
+             {
+                 c.push(a[k])
+             }
+         }
+         else if(j<p)
+         {
+             for(let m=j;m<p;m++)
+             {
+                 c.push(b[m])
+             }
+         }
+         if(c.length%2===0)
+         {
+             med=(c[(c.length/2)-1]+c[c.length/2])/2
+         }
+         else
+         {
+             med=c[Math.floor(c.length/2)]
+         }
+         console.log(med);
+        
+    }) ([1,2,3,4],[11,10,93,7]);
+
+__________________________________________________________________________
+g)Remove duplicates from an array using anonymous function
+--eg:
+var array=function(a){
+    var b=[];
+    var n=a.length;
+    for(let i=0;i<n-1;i++)
+    {
+        for(let j=i+1;j<n;j++)
+        {
+            if(a[i]===a[j])
+            {
+                delete a[j]
+            }
+        }
+    }
+    for(let i=0;i<a.length;i++)
+    {
+        if(a[i]%10===Math.floor(a[i]%10))
+        {
+            b.push(a[i])
+        }
+    }
+    let c=""
+    for(let i=0;i<b.length-1;i++)
+     {
+         c+=b[i]+" ";
+    }
+    c+=b[b.length-1];
+     return c;
+    
+}
+console.log(array([20,20,10,55,11,44,55,10]));
+______
+g)Remove duplicates from an array using IIFE function
+--eg:
+    (function(a){
+        var b=[];
+        var n=a.length;
+        for(let i=0;i<n-1;i++)
+        {
+            for(let j=i+1;j<n;j++)
+            {
+                if(a[i]===a[j])
+                {
+                    delete a[j]
+                }
+            }
+        }
+        for(let i=0;i<a.length;i++)
+        {
+            if(a[i]%10===Math.floor(a[i]%10))
+            {
+                b.push(a[i])
+            }
+        }
+        let c=""
+        for(let i=0;i<b.length-1;i++)
+         {
+             c+=b[i]+" ";
+        }
+        c+=b[b.length-1];
+         console.log(c);
+        
+    })([20,20,10,55,11,44,55,10]);
+_________________________________________________________________
+h)Rotate an array by k times using anonymous function
+--eg:
+    var rotate=function(a,k){
+        n=a.length;
+     c=[];
+      d="";
+      for(i=0;i<n;i++)
+      {
+          c[(i+k)%(n)]=a[i]
+      }
+      for(i=0;i<c.length-1;i++)
+      {
+          d+=c[i]+" "
+      }
+      d+=c[c.length-1]
+      return d;
+    }
+    console.log(rotate([1,2,3,4,5,6,7,8,9],2))
+_________
+h)Rotate an array by k times using IIFE function
+--eg:
+
+    (function(a,k){
+        n=a.length;
+     c=[];
+      d="";
+      for(i=0;i<n;i++)
+      {
+          c[(i+k)%(n)]=a[i]
+      }
+      for(i=0;i<c.length-1;i++)
+      {
+          d+=c[i]+" "
+      }
+      d+=c[c.length-1]
+      console.log(d);
+    }) ([1,2,3,4,5,6,7,8,9],4);
+______________________________________________________________________
+Q2)https://medium.com/@reach2arunprakash/guvi-zen-class-javascript-warm-up-programming-problems-15973c74b87f
+ Problem:
+
+a)Write a function called “addFive”.
+  Given a number, “addFive” returns 5 added to that number.
+   eg:  var num = 10;
+        function addFive(num)
+         { 
+        return num+5
+        }
+
+        var result = addFive(num)
+        console.log (result)
+_______________
+b)Write a function called “getOpposite”.
+Given a number, return its opposite
+    eg: var num = -15;
+        function getOpposite(num) {
+        if(Number.isInteger(num)){return num*(-1);}
+        else 
+        {return -1}}
+
+        var result = getOpposite(num)
+        console.log(result)
+________________
+c)Fill in your code that takes an number minutes and converts it to seconds.
+
+Examples
+toSeconds(5) ➞ 300
+
+toSeconds(3) ➞ 180
+
+toSeconds(2) ➞ 120
+    eg:var min = 5;
+        function toSeconds(min) {return min*60;}
+        var secs = toSeconds(min)
+        console.log(secs)
+__________________
+d)Create a function that takes a string and returns it as an integer.
+    eg:var strg = "21";
+        function toInteger(strg) {return parseInt(strg);}
+        var convint = toInteger(strg)
+        console.log(convint)
+________________
+e)Create a function that takes a number as an argument, increments the number by +1 and returns the result.
+        eg:var myint = 99;
+            function nextNumber(myint) {
+            return myint+1
+            }
+            var incrint = nextNumber(myint)
+            console.log(incrint)
+_______________
+f)Create a function that takes an array and returns the first element.
+
+Examples
+getFirstElement([1, 2, 3]) ➞ 1
+    eg:var arr = [1, 2, 3];
+        function getFirstElement(arr) {
+            return arr[0]
+        }var data = getFirstElement(arr)
+        console.log(data)
+______________
+g)Convert Hours into Seconds
+
+Write a function that converts hours into seconds.
+
+Examples
+hourToSeconds(2) ➞ 7200
+        eg:var arr = [1, 2, 3];function hourToSeconds(arr) {
+            for(i=0;i<arr.length;i++){
+            arr[i] = 3600*arr[i];
+            }
+            return arr}
+            var data = hourToSeconds(arr)
+            console.log(data)
+______________
+h)Find the Perimeter of a Rectangle
+Create a function that takes height and width and finds the perimeter of a rectangle.
+
+Examples
+findPerimeter(6, 7) ➞ 26
+        eg:function findPerimeter(num1,num2) {
+                return num1*num2
+            }var peri = findPerimeter(6,7)
+            console.log(peri)
+______________
+i)Less Than 100?
+Given two numbers, return true if the sum of both numbers is less than 100. Otherwise return false.
+Examples
+lessThan100(22, 15) ➞ true
+        eg:function lessThan100(num1,num2) {
+                if(num1+num2<100){return true}
+                else {return false}
+            }var res = lessThan100(220,15)
+            console.log(res
+______________
+j)here is a single operator in JavaScript, capable of providing the remainder of a division operation. Two numbers are passed as parameters. The first parameter divided by the second parameter will have a remainder, possibly zero. Return that value.
+
+Examples
+remainder(1, 3) ➞ 1
+        eg:
+_____________
+k)Old macdonald had a farm:
+
+MacDonald is asking you to tell him how many legs can be counted among all his animals. The farmer breeds three species:
+
+turkey = 2 legs
+horse = 4 legs
+pigs = 4 legs
+        eg:function CountAnimals(turkey,horse,pigs) {
+            var a = 2*turkey;
+            var b = 4*(horse+pigs);
+            return a+b}
+            var legs = CountAnimals(2,3,5)
+            console.log(legs)
+______________
+l)Frames Per Second
+Create a function that returns the number of frames shown in a given number of minutes for a certain FPS.
+
+Examples
+frames(1, 1) ➞ 60
+        eg:function frames(num1,num2) {
+              var n=60*(num1,num2)
+              return n
+            }var fps = frames(2,4)
+            console.log(fps)
+______________
+m)Check if an Integer is Divisible By Five
+Create a function that returns true if an integer is evenly divisible by 5, and false otherwise.
+
+Examples
+divisibleByFive(5) ➞ true
+        eg:function divisibleByFive(num1) {
+            if(num1%5===0){return true}
+            else{return false}
+        }var divisible = divisibleByFive(53)
+        console.log(divisible)
+_______________
+n)Write a function called “isEven”.
+Given a number, “isEven” returns whether it is even.
+
+Input:
+isEven(12);
+        eg:function isEven(num){
+            if(parseInt(num)==num){
+                if(num%2===0){return true}
+                else{return false}
+                }
+                else{return -1} }
+                var even = isEven(5)
+                console.log(even)
+______________
+o)Write a function called “areBothOdd”.
+Given 2 numbers, “areBothOdd” returns whether or not both of the given numbers are odd.
+
+Input:
+areBothOdd(1, 3);
+        eg:function areBothOdd(num1, num2){
+            if(num1 & num2 %2 !=0){return true}
+            else{return false}
+           }var odd=areBothOdd(30,5)
+           console.log(odd)
+___________
+p)Write a function called “getFullName”.
+Given a first and a last name, “getFullName” returns a single string with the given first and last names separated by a single space.
+
+Input:
+
+getFullName(“GUVI”, “GEEK”);
+        eg:function getFullName(firstName, lastName){
+                if((firstName!='')&&(lastName!='')){return firstName + ' ' + lastName}
+             else{return firstName + lastName}
+               }var fullname=getFullName("parvin","khan")
+               console.log(fullname)
+_____________
+q)Write a function called “getLengthOfWord”.
+Given a word, “getLengthOfWord” returns the length of the given word.
+Input:
+
+getLengthOfWord(“fullstack”);
+        eg:function getLengthOfWord(word1){
+            if(typeof(word1)==='string'){return word1.length}
+            else{return -1}}
+            var len=getLengthOfWord("fullstack")
+            console.log(len)
+______________
+r)Create a function to calculate the distance between two points defined by their x, y coordinates
+        eg:console.log(getDistance(100, 100, 400, 300));
+            function getDistance(x1, y1, x2, y2)
+            {
+            var d1 = (x1-x2)*(x1-x2);
+            d2=(y1-y2)*(y1-y2);
+            return d1+d2}
+______________
+s)Write a function called “getNthElement”.
+Given an array and an integer, “getNthElement” returns the element at the given integer, within the given array. If the array has a length of 0, it should return ‘undefined’.
+Input:
+getNthElement([1, 3, 5], 1);
+        eg:function getNthElement(array,n){return array[n-1]}
+            var a =getNthElement([1,3,5],1)
+            console.log(a)
+____________
+t)Write a function called “getLastElement”.
+Given an array, “getLastElement” returns the last element of the given array. If the given array has a length of 0, it should return ‘-1’.
+Input:
+getLastElement([1, 2, 3, 4]);
+Output:
+4
+        eg:function getLastElement(array){return array[array.length-1]}
+            var a =getLastElement([1,3,5])
+            console.log(a)
+____________
+u)Write a function called “getProperty”.
+Given an object and a key, “getProperty” returns the value of the property at the given key. If there is no property at the given key, it should return undefined.
+
+var obj = {
+mykey: “value”
+};
+        eg:var obj = {
+             mykey: “value”
+            };
+            function getProperty(obj, key) {return obj.key}
+____________
+v)Write a function called “addProperty”.
+Given an object and a key, “addProperty” adds a new property on the given object with a value of true.
+
+var obj = {
+}
+        eg:var obj = {
+                 mykey: “value”
+                };
+                function addProperty(obj, key){obj.key=true; return obj}
+______________
+w)Write a function called “removeProperty”.
+Given an object and a key, “removeProperty” removes the given key from the given object.
+Input:
+removeProperty(obj, “name”);
+        eg:
+_____________
+x)Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers.
+        eg:function countPositivesSumNegatives(input) {
+                const answer = []
+                let positiveSum = 0
+                let negativeSum = 0
+
+                if(input && input.length) {
+                  for(let i = 0; i < input.length; i++) {
+                    if(input[i] > 0) {
+                        positiveSum += 1
+                    } else {
+                        negativeSum += input[i]
+                    }
+                  }
+                  answer.push(positiveSum)
+                  answer.push(negativeSum)
+                }
+                return answer
+            }
+            ans=countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15])
+            console.log(ans)
+______________
+y)Create a function that receives an array of numbers and returns an array containing only the positive numbers
+        eg:function getPositives(ar)
+            {
+                var ar2 = [];
+                
+                for(var i = 0; i < ar.length; i++)
+                {
+                    var el = ar[i];
+                    
+                    if (el >= 0)
+                    {
+                        ar2.push(el);
+                    }
+                }
+                
+                return ar2;
+            }
+
+            var ar = [-5, 10, -3, 12, -9, 5, 90, 0, 1];
+            var ar2 = getPositives(ar);
+
+            console.log(ar2)
+________________
+z)Write a function `powersOfTwo` which will return list of all powers of 2 from 0 to n (where n is an exponent).
+
+      eg: function powersOfTwo(n){
+          var myArray = [];
+          for (var i=0; i<=n; i++){
+            myArray.push(2**i);
+          }
+          return myArray
+        }
+
+        const result = powersOfTwo(4)
+        console.log(result)
+________________
+I)Find the maximum number in an array of numbers
+       eg:function biggestNumberInArray(arr) {
+                const max = Math.max(...arr);
+                return max;
+              }var m=biggestNumberInArray([-1,2,6,8,9,-4])
+             console.log(m)
+________________
+II)Print the first 100 prime numbers
+        eg:
+III)
+        eg:console.log(sumCSV("1.5, 2.3, 3.1, 4, 5.5, 6, 7, 8, 9, 10.9"));
+
+        function sumCSV(s)
+        {
+            var ar = s.split(",");
+            
+            var sum = 0;
+            
+            for(var n of ar)
+            {
+                sum += parseFloat(n);
+            }
+            
+            return sum;
+        }
+_______________
+IV)Create a function that will merge two arrays and return the result as a new array
+        eg: var arr1=[1,2,3,4]
+             var arr2=[5,6,7,8]
+
+            let arr= arr1.concat(arr2); 
+            console.log(JSON.stringify(arr))
+_________________
+V)Reverse a string
+        eg:function reverseString(str) {
+            var splitString = str.split("");
+            var reverseArray = splitString.reverse(); 
+             var joinArray = reverseArray.join(""); 
+              return joinArray; 
+        }
+ 
+        var re=reverseString("hello");
+        console.log(re)
+________________
+VI)Create a function that will return in an array the first “nPrimes” prime numbers greater than a particular number “startAt”
+        eg:console.log(getPrimes(10, 100));
+
+            function getPrimes(nPrimes, startAt)
+            {
+                var ar = [];
+                
+                var i = startAt;
+                
+                while(ar.length < nPrimes)
+                {
+                    if (isPrime(i))
+                    {
+                        ar.push(i);
+                    }
+                    
+                    i++;
+                }
+                
+                return ar;
+            }
+
+            // Returns true if a number is prime
+            function isPrime(n)
+            {
+                if (n < 2)
+                    return false;
+                    
+                if (n == 2)
+                    return true;
+                
+                var maxDiv = Math.sqrt(n);
+                
+                for(var i = 2; i <= maxDiv; i++)
+                {
+                    if (n % i == 0)
+                    {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+
+_____________________________________________________________________________________
+Do the below programs in arrow functions
+a)Print odd numbers in an array
+---eg: let arr = [1,2,3,4,5,6,7,8,9,10,11,12]
+
+        let odds = arr.filter(n => n%2)
+
+        console.log(odds)
+_____________
+b)Convert all the strings to title caps in a string array
+ ---eg:  titleCaps=(str)=> {
+            str = str.toLowerCase().split(" ");
+            for (var i = 0; i < str.length; i++) {
+              str[i] = str[i].toUpperCase() ;
+            }
+            return str.join(" ");
+          }
+          console.log(titleCaps("day 5 task"));
+______________
+c)Sum of all numbers in an array
+---eg: let add = (a,b) => a + b;
+
+       console.log(add(50,60)); 
+____________
+d)Return all the prime numbers in an array
+---eg: const newArray = [1, 2,3,4,5,6,7,8,9];
+        const myPrimeArray = newArray.filter(n => {
+          for (let i = 2; i < n; i++) {
+            if (n % i === 0) return false;
+          }
+          return n !== 1;
+        });
+        console.log(myPrimeArray);
+____________
+e)Return all the palindromes in an array
+--eg:  palindrome=(str) =>{
+
+        var len = str.length;
+        var mid = Math.floor(len/2);
+
+        for ( var i = 0; i < mid; i++ ) {
+            if (str[i] !== str[len - 1 - i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    console.log(palindrome("madam"));
+_______________________________________________________________________
+4) Practice(submission not needed) -
+ https://medium.com/@reach2arunprakash/www-guvi-io-zen-d395deec1373
+
+----------------------------------------------xx---------------------------------
+
+                 
