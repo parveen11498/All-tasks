@@ -1,0 +1,32 @@
+
+.container{
+    border: 2px solid rgb(252, 239, 239);
+    max-width: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    
+}
+div, div > input{
+    padding: 0.5rem;
+}
+
+p{
+    background-color: red;
+    color: rgb(248, 244, 244);
+    font-family: cursive;
+    margin: auto;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+}
+form{
+    background-color: rgb(248, 244, 244);
+}
+
+.l1{
+    min-width: 50%;
+}
+.l2{
+    min-width: 100%;
+}
