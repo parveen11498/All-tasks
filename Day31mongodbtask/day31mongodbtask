@@ -1,0 +1,349 @@
+Database - MongoDB- Task 
+
+Design database for Zen class programme
+users
+codekata
+attendance
+topics
+tasks
+company_drives
+mentors
+----------------------------------------------
+SOLVED:-
+Database name:zen_class
+use zen_class;
+
+create collection called users and insert data
+db.createCollection("users");
+
+db.users.insertMany([
+    {
+        userid:1,
+        name:"Akbar",
+        email:"akbar123@gmail.com",
+        
+    },
+     {
+        userid:2,
+        name:"sherol",
+        email:"sherol123@gmail.com",
+     
+    },
+     {
+        userid:3,
+        name:"Anisha",
+        email:"anisha123@gmail.com",
+     
+    },
+     {
+        userid:4,
+        name:"Shesha",
+        email:"shesha123@gmail.com",
+       
+    },
+     {
+        userid:5,
+        name:"Swella",
+        email:"swella123@gmail.com",
+        
+    }
+    
+    ])
+
+-------------------------------------------------------------------------------------------------------
+* create collection called codekata and insert data
+    db.createCollection("codekata");
+
+db.codekata.insertMany([
+    {
+        userid:1,
+        problems:50
+    },
+     {
+        userid:2,
+        problems:80
+    },
+     {
+        userid:3,
+        problems:85
+    },
+     {
+        userid:4,
+        problems:50
+    },
+     {
+        userid:5,
+        problems:120
+    }
+    ])  
+
+--------------------------------------------------------------------------------------------------
+   * create collection called topics and insert data
+db.createCollection("topics");
+
+db.topics.insertMany([
+    {   
+        topicid:1,
+        topic:"HTML",
+        topic_date:new Date("24-oct-2021")
+    },
+     {
+         topicid:2,
+        topic:"CSS",
+        topic_date:new Date("11-oct-2021")
+    },
+     {
+         topicid:3,
+        topic:"Bootstrap",
+        topic_date:new Date("18-oct-2021")
+    },
+     {
+         topicid:4,
+        topic:"JavaScript",
+        topic_date:new Date("25-oct-2021")
+    },
+     {
+         topicid:5,
+        topic:"React JS",
+        topic_date:new Date("10-oct-2021")
+    }
+    ])
+
+    --------------------------------------------------------------------------------------------------
+    * create collection called tasks and insert data
+
+    db.createCollection("tasks");
+
+    db.tasks.insertMany([
+    {
+        taskid:1,
+        topicid:1,
+        userid:5,
+        task:"HTML task",
+        due_date:new Date("4-oct-2021"),
+        submitted:true
+    },
+    {
+        taskid:2,
+        topicid:2,
+        userid:4,
+        task:"CSS task",
+        due_date:new Date("11-oct-2021"),
+        submitted:true
+    },
+     {
+        taskid:3,
+        topicid:3,
+        userid:3,
+        task:"Bootstrap task",
+        due_date:new Date("18-oct-2021"),
+        submitted:false
+    },
+      {
+        taskid:4,
+        topicid:4,
+        userid:2,
+        task:"JavaScript task",
+        due_date:new Date("25-oct-2021"),
+        submitted:true
+    },
+     {
+        taskid:5,
+        topicid:5,
+        userid:1,
+        task:"React JS task",
+        due_date:new Date("10-oct-2021"),
+        submitted:false
+    }
+    ])
+
+      --------------------------------------------------------------------------------------------------
+* create collection called attendance and insert data
+
+      db.createCollection("attendance");
+
+      db.attendance.insertMany([
+    {
+        userid:1,
+        topicid:2,
+        attended:true
+    },
+     {
+        userid:2,
+        topicid:1,
+        attended:true
+    },
+     {
+        userid:3,
+        topicid:5,
+        attended:false
+    },
+    {
+        userid:4,
+        topicid:3,
+        attended:true
+    },
+    {
+        userid:5,
+        topicid:4,
+        attended:false
+    }
+    
+    ])
+    
+    --------------------------------------------------------------------------------------------------
+    * create collection mentors and insert data
+
+      db.createCollection("mentors");
+
+    db.mentors.insertMany([
+    {
+        mentorid:1,
+        mentorname:"Saroj",
+        mentor_email:"saroj123@gmail.com",
+        mentee_count: 10
+    },
+      {
+        mentorid:2,
+        mentorname:"Tamil",
+        mentor_email:"tamil123@gmail.com",
+        mentee_count:16
+    },
+      {
+        mentorid:3,
+        mentorname:"Suman",
+        mentor_email:"suman@gmail.com",
+        mentee_count:10
+    },
+      {
+        mentorid:4,
+        mentorname:"Kishor",
+        mentor_email:"kishor@gmail.com",
+        mentee_count:20
+    },
+      {
+        mentorid:5,
+        mentorname:"Riyaz",
+        mentor_email:"riyaz@gmail.com",
+        mentee_count:30
+    }
+    ])
+
+    --------------------------------------------------------------------------------------------------
+    * create collection called company drives and insert data
+
+      db.createCollection("companydrives");
+
+      db.comapnydrives.insertMany([
+    {
+        userid:1,
+        drive_date:new Date("5-oct-2021"),
+        company:"TCS"
+    },
+     {
+        userid:1,
+        drive_date:new Date("18-oct-2021"),
+        company:"HCL"
+    },
+     {
+        userid:2,
+        drive_date:new Date("23-oct-2021"),
+        company:"Amazon"
+    },
+     {
+        userid:3,
+        drive_date:new Date("28-oct-2021"),
+        company:"Wipro"
+    },
+     {
+        userid:4,
+        drive_date:new Date("2-nov-2021"),
+        company:"ITC"
+    }
+    ])
+    
+___________________________________________________________________________________
+Q1):-Find all the topics and tasks which are thought in the month of October
+
+db.topics.aggregate([
+    {
+        $lookup: {
+               from: "tasks",
+               localField: "topicid",
+               foreignField: "topicid",
+               as: "taskinfo"
+             }
+    },
+    {
+        $match:{$and:[{$or:[{topic_date:{$gt:new Date("30-sep-2021)}},{topic_date:{$lt:new Date("1-nov-2021")}}]},
+        
+          {$or:[{"taskinfo.due_date":{$gt:new Date("30-sep-2021")}},{"taskinfo.due_date":{$lt:new Date("1-nov-2021")}}]}
+        ]}
+    }
+    
+    ])
+___________________________________________________________________________________
+Q2.Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+
+db.comapnydrives.find({$or:[{drive_date:{$gte:new Date("15-oct-2021")}},
+{drive_date:{$lte:new Date("31-0ct-2021")}}]})
+
+___________________________________________________________________________________
+Q3..Find all the company drives and students who are appeared for the placement.
+
+db.comapnydrives.aggregate([
+    {
+        $lookup: {
+              from:"users",
+              localField:"userid",
+              foreignField:"userid",
+              as :"userinfo"
+             }
+    },
+    {
+        $project:{
+            _id:0,
+            "userinfo.name":1,
+            company:1,
+            drive_date:1,
+            "userinfo.email":1,
+            "userinfo.userid":1
+        }
+    }
+    ])
+____________________________________________________________________
+Q4.Find the number of problems solved by the user in codekata
+
+db.codekata.aggregate([
+    {
+        $lookup: {
+               from: "users",
+               localField: "userid",
+               foreignField: "userid",
+               as: "userinfo"
+             }
+    },
+    {
+        $project:{
+            _id:0,userid:1,problems:1,"userinfo.name":1
+        }
+    }
+    ])
+   
+_________________________________________________________________________________________
+
+Q6.Find all the mentors with who has the mentee's count more than 15
+
+db.users.aggregate([
+   {$lookup: {
+          from: "mentors",
+          localField: "mentorid",
+          foreignField: "mentorid",
+          as: "mentorInfo"
+        }},
+   {$group:{_id:{mentorid:"$mentorInfo.mentorid",mentorname:"$mentorInfo.mentorname"},mentee_count:{$sum:1}}},
+   {$match:{mentee_count:{$gt:15}}},
+   
+   ])
+---------------------------------------------xx-----------------------------------------------------------
